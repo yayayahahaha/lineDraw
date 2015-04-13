@@ -16,6 +16,8 @@ window.onload = function(argument) {
 		cube = new THREE.Mesh(geometry, material);
 	scene.add(cube);
 
+
+	/*start to create the line*/
 	var lineMeterial = new THREE.LineBasicMaterial({
 		color: 0x00ff00
 	});
@@ -32,8 +34,20 @@ window.onload = function(argument) {
 
 	console.log(line.position);
 	console.log(line);
-
 	scene.add(line);
+
+	/*start to create the traingle*/
+	var traingleGeometry = new THREE.Geometry();
+	traingleGeometry.vertices.push(
+		new THREE.Vector3(0,0,0),
+		new THREE.Vector3(3,0,0),
+		new THREE.Vector3(3,3,0)
+	);
+	traingleGeometry.faces.push(new THREE.Face3(0,1,2));
+	traingleGeometry.computeFaceNormals();
+
+	var traingleMesh = new THREE.Mesh(traingleGeometry, new THREE.MeshNormalMaterial());
+	scene.add(traingleMesh);
 
 	camera.position.z = 5;
 
@@ -50,7 +64,7 @@ window.onload = function(argument) {
 			line.geometry.vertices[0].x += 0.01;
 			line.geometry.vertices[0].y += 0.01;
 			line.geometry.vertices[0].z -= 0.05;
-		} else{
+		} else {
 			line.geometry.vertices[0].x = -5;
 			line.geometry.vertices[0].y = 0;
 			line.geometry.vertices[0].z = 0;
