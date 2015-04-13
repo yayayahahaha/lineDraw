@@ -8,21 +8,24 @@ window.onload = function(argument) {
 	document.body.appendChild(renderer.domElement);
 
 	/* start to create the cube */
-	var geometry = new THREE.BoxGeometry(1, 1, 1),
+	var geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2),
 		material = new THREE.MeshBasicMaterial({
 			color: 0xff00fd,
 			wireframe: true
 		}),
 		cube = new THREE.Mesh(geometry, material);
+	console.log("cube:", cube.geometry.vertices[0]);
 	scene.add(cube);
 
 	camera.position.z = 5;
 
-	function render () {
+	function render() {
 		requestAnimationFrame(render);
 
-		cube.rotation.x += 0.05,
-		cube.rotation.y += 0.05;
+		cube.rotation.x += 0.01,
+			cube.rotation.y += 0.01;
+
+		cube.geometry.vertices[0].x += 0.01;
 
 		renderer.render(scene, camera);
 	}
