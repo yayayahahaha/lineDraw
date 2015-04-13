@@ -10,7 +10,8 @@ window.onload = function(argument) {
 	/* start to create the cube */
 	var geometry = new THREE.BoxGeometry(1, 1, 1),
 		material = new THREE.MeshBasicMaterial({
-			color: 0xff00fd
+			color: 0xff00fd,
+			wireframe: true
 		}),
 		cube = new THREE.Mesh(geometry, material);
 	scene.add(cube);
@@ -19,6 +20,10 @@ window.onload = function(argument) {
 
 	function render () {
 		requestAnimationFrame(render);
+
+		cube.rotation.x += 0.05,
+		cube.rotation.y += 0.05;
+
 		renderer.render(scene, camera);
 	}
 	render();
