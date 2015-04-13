@@ -27,6 +27,8 @@ window.onload = function(argument) {
 
 		cube.geometry.vertices[0].x += 0.01;
 
+		cube.geometry.verticesNeedUpdate = true;
+
 		renderer.render(scene, camera);
 	}
 	render();
