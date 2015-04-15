@@ -14,18 +14,25 @@ window.onload = function(argument) {
 			wireframe: true
 		}),
 		cube = new THREE.Mesh(geometry, material);
-	console.log("cube:", cube.geometry.vertices[0]);
+	/*console.log("cube:", cube.geometry.vertices[0]);*/
 	scene.add(cube);
 
 	camera.position.z = 5;
 
+
+	cube.rotation.x = Math.PI / 2;
+	
+	cube.geometry.vertices[4].x += 3;
+
+
 	function render() {
 		requestAnimationFrame(render);
+		cube.rotation.z += 0.01;
 
-		cube.rotation.x += 0.01,
+		/*cube.rotation.x += 0.01,
 			cube.rotation.y += 0.01;
 
-		cube.geometry.vertices[0].x += 0.01;
+		cube.geometry.vertices[0].x += 0.01;*/
 
 		cube.geometry.verticesNeedUpdate = true;
 
